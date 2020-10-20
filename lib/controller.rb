@@ -16,7 +16,17 @@ post '/gossips/new/' do
 end
 
 get '/gossips/:id' do
-	erb :gossip	
+	erb :show, locals: {nb: params['id'].to_i }
 end
 
+get '/gossips/:id/edit' do
+	erb :edit, locals: {nb: params['id'].to_i }
+end
+
+post '/gossips/:id/edit' do
+	CSV.open("./db/gossip.csv","wb").each do |csv|
+				csv[1] = "C'est faux !"
+		end
+	redirect '/'
+end
 end

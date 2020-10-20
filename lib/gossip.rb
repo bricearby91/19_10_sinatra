@@ -15,6 +15,10 @@ class Gossip
 		end
 	end
 
+	def update(nb, new_content)
+		@content = new_content
+	end
+
 	def self.find_gossip(nb)
 		CSV.read("./db/gossip.csv").each_with_index do |line, i|
 		if i+1 == nb
